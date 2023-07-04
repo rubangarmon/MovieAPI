@@ -16,13 +16,13 @@ namespace MovieAPI.Application.Controllers
 
         [HttpGet]
         [Route("movies")]
-        public async Task<IActionResult> GetItems([FromQuery]string name)
+        public async Task<IActionResult> GetMovies([FromQuery]string name)
         {
             if (string.IsNullOrEmpty(name))
             {
                 return BadRequest($"{name} cannot be empty");
             }
-            var res = await _httpMovieService.GetByNameAsync(name);
+            var res = await _httpMovieService.GetMovieByNameAsync(name);
             if(res == null)
             {
                 return NotFound();
@@ -38,7 +38,7 @@ namespace MovieAPI.Application.Controllers
             {
                 return BadRequest($"{name} cannot be empty");
             }
-            var res = await _httpMovieService.GetByNameAsync(name);
+            var res = await _httpMovieService.GetSerieTvByNameAsync(name);
             if (res == null)
             {
                 return NotFound();

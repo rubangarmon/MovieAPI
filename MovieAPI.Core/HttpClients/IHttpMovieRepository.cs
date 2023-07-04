@@ -4,6 +4,7 @@ namespace MovieAPI.Core.HttpClients
 {
     public interface IHttpMovieRepository
     {
-        Task<Response> GetByNameAsync(string name);
+        Task<Response<Movie>> GetMovieByNameAsync(string name);
+        Task<Response<TvSerie>> GetSerieTvByNameAsync(string name);
     }
 }

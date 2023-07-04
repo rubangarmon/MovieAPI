@@ -9,8 +9,11 @@ namespace MovieAPI.Infrastructure.MappingProfiles
     {
         public DtoToEntity()
         {
+            //CreateMap<MediaBaseDTO,>
             CreateMap<MovieDTO, Movie>().ReverseMap();
-            CreateMap<ResponseDTO, Response>().ReverseMap();
+            CreateMap<TvSerieDTO, TvSerie>().ReverseMap();
+            CreateMap<ResponseDTO<MovieDTO>, Response<Movie>>().ReverseMap();
+            CreateMap<ResponseDTO<TvSerieDTO>, Response<TvSerie>>().ReverseMap();
         }
     }
 }

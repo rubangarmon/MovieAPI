@@ -1,19 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace MovieAPI.ServiceModel.DTOs
 {
-    public class ResponseDTO
+    public class ResponseDTO<T>
     {
-        [JsonProperty("page")]
+        [JsonPropertyName("page")]
         public int Page { get; set; } = 1;
 
-        [JsonProperty("total_pages")]
+        [JsonPropertyName("total_pages")]
         public int TotalPages { get; set; } = 0;
 
-        [JsonProperty("total_results")]
+        [JsonPropertyName("total_results")]
         public int TotalResults { get; set; } = 0;
 
-        [JsonProperty("results")]
-        public IEnumerable<MovieDTO> Movies { get; set; } = new List<MovieDTO>();
+        [JsonPropertyName("results")]
+        public IEnumerable<T> Movies { get; set; } = new List<T>();
     }
 }
