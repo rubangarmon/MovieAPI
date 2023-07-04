@@ -384,7 +384,7 @@
             "total_results": 21
           }
     ,
-    "serie": [
+    "serie": 
         {
             "page": 1,
             "results": [
@@ -791,5 +791,4 @@
             "total_pages": 4,
             "total_results": 61
           }
-    ]
 }
