@@ -7,17 +7,23 @@ using System.Web;
 
 namespace MovieAPI.Infrastructure.HttpClients
 {
-    public class HttpTmdbMovieRepository : IHttpMovieRepository
+    public class HttpTmdbMovieRepository<TMedia,TMediaDTO> : IHttpMediaRepository<TMedia> where TMedia : MediaBase
     {
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
+        private readonly string _url;
         public HttpTmdbMovieRepository(HttpClient httpClient, IMapper mapper)
         {
             _httpClient = httpClient;
             _mapper = mapper;
+
+            var typeMedia = typeof(TMedia);
+            _url = typeMedia == typeof(Movie) ? "search/movie?" : "search/serie?";
         }
-        public async Task<Response<Movie>> GetMovieByNameAsync(string name)
+
+        public async Task<Response<TMedia>> GetMediaItemsByNameAsync(string name)
         {
+
             var dictionaryParameters = new Dictionary<string, string?>()
             {
                 ["query"] = name,
@@ -32,49 +38,17 @@ namespace MovieAPI.Infrastructure.HttpClients
             }
             try
             {
-                using HttpResponseMessage res = await _httpClient.GetAsync("search/movie?" + parameters.ToString());
+                using HttpResponseMessage res = await _httpClient.GetAsync(_url + parameters.ToString());
                 res.EnsureSuccessStatusCode();
                 var body = res.Content.ReadAsStringAsync().Result;
-                //var responseDTO = JsonConvert.DeserializeObject<ResponseDTO>(body, new JsonSerializerSettings()
                 var serializeOptions = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     WriteIndented = true
                 };
-                var responseDTO = JsonSerializer.Deserialize<ResponseDTO<MovieDTO>>(body, serializeOptions);
-                var response = _mapper.Map<Response<Movie>>(responseDTO);
-                return response ?? new Response<Movie>();
-
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
-        }
-
-        public async Task<Response<TvSerie>> GetSerieTvByNameAsync(string name)
-        {
-            var dictionaryParameters = new Dictionary<string, string?>()
-            {
-                ["query"] = name,
-                ["include_adult"] = false.ToString(),
-                ["language"] = "en-US",
-                ["page"] = "1"
-            };
-            var parameters = HttpUtility.ParseQueryString(string.Empty);
-            foreach (var pair in dictionaryParameters)
-            {
-                parameters.Add(pair.Key, pair.Value);
-            }
-            try
-            {
-                using HttpResponseMessage res = await _httpClient.GetAsync("search/serie?" + parameters.ToString());
-                res.EnsureSuccessStatusCode();
-                var body = res.Content.ReadAsStringAsync().Result;
-                var responseDTO = JsonSerializer.Deserialize<ResponseDTO<TvSerieDTO>>(body);
-                var response = _mapper.Map<Response<TvSerie>>(responseDTO);
-                return response ?? new Response<TvSerie>();
+                var responseDTO = JsonSerializer.Deserialize<ResponseDTO<TMediaDTO>>(body, serializeOptions);
+                var response = _mapper.Map<Response<TMedia>>(responseDTO);
+                return response ?? new Response<TMedia>();
 
             }
             catch (Exception e)

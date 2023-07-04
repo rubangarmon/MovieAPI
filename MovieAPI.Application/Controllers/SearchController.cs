@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieAPI.Core.HttpClients;
+using MovieAPI.Core.Models;
 
 namespace MovieAPI.Application.Controllers
 {
@@ -7,11 +8,13 @@ namespace MovieAPI.Application.Controllers
     [Route("api/[controller]")]
     public class SearchController : ControllerBase
     {
-        private readonly IHttpMovieRepository _httpMovieService;
+        private readonly IHttpMediaRepository<Movie> _httpMovieService;
+        private readonly IHttpMediaRepository<TvSerie> _httpTvSerieService;
 
-        public SearchController(IHttpMovieRepository httpMovieService)
+        public SearchController(IHttpMediaRepository<Movie> httpMovieService, IHttpMediaRepository<TvSerie> httpTvSerieService)
         {
             _httpMovieService = httpMovieService;
+            _httpTvSerieService = httpTvSerieService;
         }
 
         [HttpGet]
@@ -22,7 +25,7 @@ namespace MovieAPI.Application.Controllers
             {
                 return BadRequest($"{name} cannot be empty");
             }
-            var res = await _httpMovieService.GetMovieByNameAsync(name);
+            var res = await _httpMovieService.GetMediaItemsByNameAsync(name);
             if(res == null)
             {
                 return NotFound();
@@ -38,7 +41,7 @@ namespace MovieAPI.Application.Controllers
             {
                 return BadRequest($"{name} cannot be empty");
             }
-            var res = await _httpMovieService.GetSerieTvByNameAsync(name);
+            var res = await _httpTvSerieService.GetMediaItemsByNameAsync(name);
             if (res == null)
             {
                 return NotFound();

@@ -5,6 +5,8 @@ using MovieAPI.Infrastructure.MappingProfiles;
 using System.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MovieAPI.Core.Models;
+using MovieAPI.ServiceModel.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,14 +20,16 @@ builder.Services.AddAutoMapper(config =>
 });
 //var config = builder.Services.Configure<HttpMovieRepositoryOptions>(conf => conf.getse)
 var httpMovieRepoOptions = builder.Configuration.GetSection(HttpMovieRepositoryOptions.OptionName).Get<HttpMovieRepositoryOptions>()!;
-builder.Services.AddHttpClient<IHttpMovieRepository, HttpTmdbMovieRepository>(
-    client =>
-    {
-        client.BaseAddress = new Uri(httpMovieRepoOptions.BaseURL);
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        client.DefaultRequestHeaders.UserAgent.ParseAdd(httpMovieRepoOptions.UserAgent);
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpMovieRepoOptions.Token);
-    });
+Action<HttpClient> fc = client =>
+{
+    client.BaseAddress = new Uri(httpMovieRepoOptions.BaseURL);
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    client.DefaultRequestHeaders.UserAgent.ParseAdd(httpMovieRepoOptions.UserAgent);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpMovieRepoOptions.Token);
+};
+
+builder.Services.AddHttpClient<IHttpMediaRepository<Movie>, HttpTmdbMovieRepository<Movie, MovieDTO>>(fc);
+builder.Services.AddHttpClient<IHttpMediaRepository<TvSerie>, HttpTmdbMovieRepository<TvSerie, TvSerieDTO>>(fc);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -2,9 +2,8 @@
 
 namespace MovieAPI.Core.HttpClients
 {
-    public interface IHttpMovieRepository
+    public interface IHttpMediaRepository<TMedia> where TMedia : MediaBase
     {
-        Task<Response<Movie>> GetMovieByNameAsync(string name);
-        Task<Response<TvSerie>> GetSerieTvByNameAsync(string name);
+        Task<Response<TMedia>> GetMediaItemsByNameAsync(string name);
     }
 }
