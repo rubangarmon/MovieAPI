@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MovieAPI.Core.HttpClients;
 using MovieAPI.Core.Models;
+using MovieAPI.Infrastructure.Extensions;
 using MovieAPI.ServiceModel.DTOs;
 using System.Text.Json;
 using System.Web;
@@ -11,19 +12,19 @@ namespace MovieAPI.Infrastructure.HttpClients
     {
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
-        private readonly string _url;
+        private readonly string _mediaTypeUrl;
         public HttpTmdbMovieRepository(HttpClient httpClient, IMapper mapper)
         {
             _httpClient = httpClient;
             _mapper = mapper;
 
             var typeMedia = typeof(TMedia);
-            _url = typeMedia == typeof(Movie) ? "search/movie?" : "search/serie?";
+            _mediaTypeUrl = typeMedia == typeof(Movie) ? "movie?" : "serie?";
         }
 
-        public async Task<Response<TMedia>> GetMediaItemsByNameAsync(string name)
+        public async Task<Response<TMedia>> SearchMediaItemsByNameAsync(string name)
         {
-
+            var searchUrl = "search/";
             var dictionaryParameters = new Dictionary<string, string?>()
             {
                 ["query"] = name,
@@ -31,14 +32,11 @@ namespace MovieAPI.Infrastructure.HttpClients
                 ["language"] = "en-US",
                 ["page"] = "1"
             };
-            var parameters = HttpUtility.ParseQueryString(string.Empty);
-            foreach (var pair in dictionaryParameters)
-            {
-                parameters.Add(pair.Key, pair.Value);
-            }
+
+            var parameters = dictionaryParameters.ConvertToQueryParameters();
             try
             {
-                using HttpResponseMessage res = await _httpClient.GetAsync(_url + parameters.ToString());
+                using HttpResponseMessage res = await _httpClient.GetAsync(searchUrl + _mediaTypeUrl + parameters.ToString());
                 res.EnsureSuccessStatusCode();
                 var body = res.Content.ReadAsStringAsync().Result;
                 var serializeOptions = new JsonSerializerOptions
@@ -54,7 +52,7 @@ namespace MovieAPI.Infrastructure.HttpClients
             catch (Exception e)
             {
 
-                throw e;
+                throw;
             }
         }
     }
