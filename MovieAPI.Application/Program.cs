@@ -3,10 +3,11 @@ using MovieAPI.Core.HttpClients;
 using MovieAPI.Infrastructure.HttpClients;
 using MovieAPI.Infrastructure.MappingProfiles;
 using System.Net.Http.Headers;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using MovieAPI.Core.Models;
 using MovieAPI.ServiceModel.DTOs;
+using MovieAPI.Application.Middlewares;
+using MovieAPI.Core.Exceptions;
+using MovieAPI.Application.Commons.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,6 @@ builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile<DtoToEntity>();
 });
-//var config = builder.Services.Configure<HttpMovieRepositoryOptions>(conf => conf.getse)
 var httpMovieRepoOptions = builder.Configuration.GetSection(HttpMovieRepositoryOptions.OptionName).Get<HttpMovieRepositoryOptions>()!;
 Action<HttpClient> fc = client =>
 {
@@ -28,15 +28,15 @@ Action<HttpClient> fc = client =>
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpMovieRepoOptions.Token);
 };
 
+builder.Services.AddTransient<IMovieApiProblemDetailsFactory, MovieApiProblemDetailsFactory>();
 builder.Services.AddHttpClient<IHttpMediaRepository<Movie>, HttpTmdbMovieRepository<Movie, MovieDTO>>(fc);
 builder.Services.AddHttpClient<IHttpMediaRepository<TvSerie>, HttpTmdbMovieRepository<TvSerie, TvSerieDTO>>(fc);
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.UseMiddleware<ExceptionMiddleware>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

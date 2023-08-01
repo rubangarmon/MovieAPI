@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MovieAPI.Infrastructure.HttpClients
 {
-    public class HttpTmdbMovieRepository<TMedia,TMediaDTO> : IHttpMediaRepository<TMedia> where TMedia : MediaBase
+    public class HttpTmdbMovieRepository<TMedia, TMediaDTO> : IHttpMediaRepository<TMedia> where TMedia : MediaBase
     {
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
@@ -34,26 +34,17 @@ namespace MovieAPI.Infrastructure.HttpClients
             };
 
             var parameters = dictionaryParameters.ConvertToQueryParameters();
-            try
+            using HttpResponseMessage res = await _httpClient.GetAsync(searchUrl + _mediaTypeUrl + parameters.ToString());
+            res.EnsureSuccessStatusCode();
+            var body = res.Content.ReadAsStringAsync().Result;
+            var serializeOptions = new JsonSerializerOptions
             {
-                using HttpResponseMessage res = await _httpClient.GetAsync(searchUrl + _mediaTypeUrl + parameters.ToString());
-                res.EnsureSuccessStatusCode();
-                var body = res.Content.ReadAsStringAsync().Result;
-                var serializeOptions = new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    WriteIndented = true
-                };
-                var responseDTO = JsonSerializer.Deserialize<ResponseDTO<TMediaDTO>>(body, serializeOptions);
-                var response = _mapper.Map<Response<TMedia>>(responseDTO);
-                return response ?? new Response<TMedia>();
-
-            }
-            catch (Exception e)
-            {
-
-                throw;
-            }
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            };
+            var responseDTO = JsonSerializer.Deserialize<ResponseDTO<TMediaDTO>>(body, serializeOptions);
+            var response = _mapper.Map<Response<TMedia>>(responseDTO);
+            return response ?? new Response<TMedia>();
         }
     }
 }
