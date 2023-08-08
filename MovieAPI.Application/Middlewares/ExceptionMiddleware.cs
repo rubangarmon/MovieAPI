@@ -8,11 +8,13 @@ namespace MovieAPI.Application.Middlewares
     {
         private readonly RequestDelegate _next;
         private readonly IMovieApiProblemDetailsFactory _factory;
+        private readonly ILogger<Exception> _logger;
 
-        public ExceptionMiddleware(RequestDelegate next, IMovieApiProblemDetailsFactory factory)
+        public ExceptionMiddleware(RequestDelegate next, IMovieApiProblemDetailsFactory factory, ILogger<Exception> logger)
         {
             _next = next;
             _factory = factory;
+            _logger = logger;
         }
 
 
@@ -24,6 +26,7 @@ namespace MovieAPI.Application.Middlewares
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message);
                 await HandleExceptionAsync(context, ex);
             }
         }

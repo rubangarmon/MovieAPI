@@ -4,7 +4,6 @@ using MovieAPI.Core.Models;
 using MovieAPI.Infrastructure.Extensions;
 using MovieAPI.ServiceModel.DTOs;
 using System.Text.Json;
-using System.Web;
 
 namespace MovieAPI.Infrastructure.HttpClients
 {
