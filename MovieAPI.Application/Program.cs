@@ -8,13 +8,17 @@ using MovieAPI.ServiceModel.DTOs;
 using MovieAPI.Application.Middlewares;
 using MovieAPI.Core.Exceptions;
 using MovieAPI.Application.Commons.Exceptions;
+using FluentValidation;
+using MovieAPI.Application.Validators;
+using MovieAPI.Application.ContractsModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders().AddConsole();
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(
+    opt => opt.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
 builder.Services.AddAutoMapper(config =>
 {
@@ -29,6 +33,7 @@ Action<HttpClient> fc = client =>
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpMovieRepoOptions.Token);
 };
 
+builder.Services.AddScoped<IValidator<MediaRequest>, MediaRequestValidator>();
 builder.Services.AddTransient<IMovieApiProblemDetailsFactory, MovieApiProblemDetailsFactory>();
 builder.Services.AddHttpClient<IHttpMediaRepository<Movie>, HttpTmdbMovieRepository<Movie, MovieDTO>>(fc);
 builder.Services.AddHttpClient<IHttpMediaRepository<TvSerie>, HttpTmdbMovieRepository<TvSerie, TvSerieDTO>>(fc);
