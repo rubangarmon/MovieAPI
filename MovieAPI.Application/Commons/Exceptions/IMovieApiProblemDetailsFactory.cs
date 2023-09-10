@@ -4,6 +4,6 @@ namespace MovieAPI.Core.Exceptions
 {
     public interface IMovieApiProblemDetailsFactory
     {
-        public ProblemDetails CreateProblemDetails(Exception exception);
+        public ProblemDetails CreateProblemDetails(string traceId, Exception exception);
     }
 }

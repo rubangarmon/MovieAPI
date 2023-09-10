@@ -1,20 +1,26 @@
+using System.Net.Http.Headers;
 using MovieAPI.Application.Configuration;
 using MovieAPI.Core.HttpClients;
 using MovieAPI.Infrastructure.HttpClients;
 using MovieAPI.Infrastructure.MappingProfiles;
-using System.Net.Http.Headers;
 using MovieAPI.Core.Models;
 using MovieAPI.ServiceModel.DTOs;
 using MovieAPI.Application.Middlewares;
 using MovieAPI.Core.Exceptions;
 using MovieAPI.Application.Commons.Exceptions;
-using FluentValidation;
 using MovieAPI.Application.Validators;
 using MovieAPI.Application.ContractsModels;
+using FluentValidation;
+using Microsoft.Extensions.Logging.EventLog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.ClearProviders().AddConsole();
+#pragma warning disable CA1416 // Validate platform compatibility
+builder.Logging
+    .ClearProviders()
+    .AddConsole()
+    .AddEventLog(new EventLogSettings());
+#pragma warning restore CA1416 // Validate platform compatibility
 // Add services to the container.
 
 builder.Services.AddControllers(

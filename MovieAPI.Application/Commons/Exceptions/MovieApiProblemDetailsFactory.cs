@@ -6,46 +6,54 @@ namespace MovieAPI.Application.Commons.Exceptions
 {
     public class MovieApiProblemDetailsFactory : IMovieApiProblemDetailsFactory
     {
-        private readonly IDictionary<Type, Func<Exception, ProblemDetails>> _exceptionHandlers;
+        private delegate ProblemDetails HandleException(string traceId, Exception ex);
+        private readonly IDictionary<Type, HandleException> _exceptionHandlers;
 
         public MovieApiProblemDetailsFactory()
         {
-            _exceptionHandlers = new Dictionary<Type, Func<Exception, ProblemDetails>>
+            _exceptionHandlers = new Dictionary<Type, HandleException>
             {
                 {typeof(NotFoundException),  HandleNotFoundException}
             };
 
         }
 
-        public ProblemDetails CreateProblemDetails(Exception exception)
+        public ProblemDetails CreateProblemDetails(string traceId, Exception exception)
         {
             Type type = exception.GetType();
             if (_exceptionHandlers.ContainsKey(type))
             {
-                return _exceptionHandlers[type].Invoke(exception);
+                return _exceptionHandlers[type].Invoke(traceId,exception);
             }
-
-            return new ProblemDetails
-            {
-                Type = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
-                Status = (int)HttpStatusCode.InternalServerError,
-                Title = "The specified resource was not found.",
-                Detail = exception.Message
-            };
-
+            return CreateRawProblemDetails(
+                traceId,
+                exception,
+                "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+                HttpStatusCode.InternalServerError,
+                "We're sorry, but something went wrong.");
         }
 
-        private ProblemDetails HandleNotFoundException(Exception ex)
+        private ProblemDetails CreateRawProblemDetails(string traceId,Exception exception, string type, HttpStatusCode httpStatusCode, string title)
         {
-            return new ProblemDetails
+            return new ProblemDetails()
             {
-                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4",
-                Status = (int)HttpStatusCode.NotFound,
-                Title = "The specified resource was not found.",
-                Detail = ex.Message
+                Type = type,
+                Status = (int)httpStatusCode,
+                Title = title,
+                Detail = exception.Message,
+                Extensions =
+                {
+                    { "traceId", traceId }
+                }
             };
+
         }
-
-
+        private ProblemDetails HandleNotFoundException(string traceId, Exception ex)
+            => CreateRawProblemDetails(
+                traceId,
+                ex,
+                "https://tools.ietf.org/html/rfc7231#section-6.5.4",
+                HttpStatusCode.NotFound,
+                "The specified resource was not found."); //TODO: ex.message
     }
 }
