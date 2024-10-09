@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using MovieAPI.Core.Attributes;
+using MovieAPI.Core.Helpers;
 using MovieAPI.Core.HttpClients;
 using MovieAPI.Core.Models;
 using MovieAPI.Infrastructure.Extensions;
 using MovieAPI.ServiceModel.DTOs;
-using System.Text.Json;
+using System.Net.Http.Json;
 
 namespace MovieAPI.Infrastructure.HttpClients
 {
@@ -17,14 +19,13 @@ namespace MovieAPI.Infrastructure.HttpClients
             _httpClient = httpClient;
             _mapper = mapper;
 
-            var typeMedia = typeof(TMedia);
-            _mediaTypeUrl = typeMedia == typeof(Movie) ? "movie?" : "serie?";
+            _mediaTypeUrl = MediaTypeHelper.DetermineMediaTypeUrl<TMedia>();
         }
 
         public async Task<Response<TMedia>> SearchMediaItemsByNameAsync(string name)
         {
             var searchUrl = "search/";
-            var dictionaryParameters = new Dictionary<string, string?>()
+            var queryParameters = new Dictionary<string, string?>()
             {
                 ["query"] = name,
                 ["include_adult"] = false.ToString(),
@@ -32,18 +33,16 @@ namespace MovieAPI.Infrastructure.HttpClients
                 ["page"] = "1"
             };
 
-            var parameters = dictionaryParameters.ConvertToQueryParameters();
-            using HttpResponseMessage res = await _httpClient.GetAsync(searchUrl + _mediaTypeUrl + parameters.ToString());
-            res.EnsureSuccessStatusCode();
-            var body = res.Content.ReadAsStringAsync().Result;
-            var serializeOptions = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
-            var responseDTO = JsonSerializer.Deserialize<ResponseDTO<TMediaDTO>>(body, serializeOptions);
+            var queryString = queryParameters.ConvertToQueryParameters();
+            using HttpResponseMessage httpResponse = await _httpClient
+                .GetAsync(searchUrl + _mediaTypeUrl + queryString)
+                .ConfigureAwait(false);
+            httpResponse.EnsureSuccessStatusCode();
+            var responseDTO = await httpResponse.Content.ReadFromJsonAsync<ResponseDTO<TMediaDTO>>();
             var response = _mapper.Map<Response<TMedia>>(responseDTO);
             return response ?? new Response<TMedia>();
         }
+
+
     }
 }

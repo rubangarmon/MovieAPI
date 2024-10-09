@@ -1,5 +1,8 @@
-﻿namespace MovieAPI.Core.Models
+﻿using MovieAPI.Core.Attributes;
+
+namespace MovieAPI.Core.Models
 {
+    [MediaTypeUrl("serie?")]
     public class TvSerie : MediaBase
     {
         public string? OriginalName { get; set; }
