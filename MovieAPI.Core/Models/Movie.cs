@@ -7,6 +7,6 @@ namespace MovieAPI.Core.Models
     {
         public string OriginalTitle { get; set; } = string.Empty;
         public string? ReleaseDate { get; set; }
-        public string Title { get; set; } = string.Empty;
+        public override string Title => OriginalTitle;
     }
 }

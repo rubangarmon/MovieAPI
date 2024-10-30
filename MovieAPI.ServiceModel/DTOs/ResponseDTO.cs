@@ -14,6 +14,6 @@ namespace MovieAPI.ServiceModel.DTOs
         public int TotalResults { get; set; } = 0;
 
         [JsonPropertyName("results")]
-        public IEnumerable<T> Movies { get; set; } = new List<T>();
+        public IEnumerable<T> Results { get; set; } = new List<T>();
     }
 }

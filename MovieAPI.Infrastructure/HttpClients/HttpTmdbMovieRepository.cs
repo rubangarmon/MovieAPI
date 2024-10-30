@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MovieAPI.Core.Attributes;
 using MovieAPI.Core.Helpers;
 using MovieAPI.Core.HttpClients;
 using MovieAPI.Core.Models;
