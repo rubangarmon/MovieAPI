@@ -21,9 +21,9 @@ namespace MovieAPI.Application.Commons.Exceptions
         public ProblemDetails CreateProblemDetails(string traceId, Exception exception)
         {
             Type type = exception.GetType();
-            if (_exceptionHandlers.ContainsKey(type))
+            if (_exceptionHandlers.TryGetValue(type, out HandleException? value))
             {
-                return _exceptionHandlers[type].Invoke(traceId,exception);
+                return value.Invoke(traceId,exception);
             }
             return CreateRawProblemDetails(
                 traceId,
@@ -33,9 +33,9 @@ namespace MovieAPI.Application.Commons.Exceptions
                 "We're sorry, but something went wrong.");
         }
 
-        private ProblemDetails CreateRawProblemDetails(string traceId,Exception exception, string type, HttpStatusCode httpStatusCode, string title)
+        private static ProblemDetails CreateRawProblemDetails(string traceId,Exception exception, string type, HttpStatusCode httpStatusCode, string title)
         {
-            return new ProblemDetails()
+            return new()
             {
                 Type = type,
                 Status = (int)httpStatusCode,

@@ -12,6 +12,7 @@ using MovieAPI.Application.Validators;
 using MovieAPI.Application.ContractsModels;
 using FluentValidation;
 using Microsoft.Extensions.Logging.EventLog;
+using MovieAPI.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ Action<HttpClient> fc = client =>
 };
 
 builder.Services.AddScoped<IValidator<MediaRequest>, MediaRequestValidator>();
+builder.Services.AddScoped<IFindService, FindService>();
 builder.Services.AddTransient<IMovieApiProblemDetailsFactory, MovieApiProblemDetailsFactory>();
 builder.Services.AddHttpClient<IHttpMediaRepository<Movie>, HttpTmdbMovieRepository<Movie, MovieDTO>>(fc);
 builder.Services.AddHttpClient<IHttpMediaRepository<TvSerie>, HttpTmdbMovieRepository<TvSerie, TvSerieDTO>>(fc);
