@@ -8,6 +8,8 @@ namespace MovieAPI.Application.Validators
         public MediaRequestValidator() 
         { 
             RuleFor(x => x.Name).NotNull();
+            RuleFor(x => x.Page)
+                .GreaterThan(0);
         }
     }
 }

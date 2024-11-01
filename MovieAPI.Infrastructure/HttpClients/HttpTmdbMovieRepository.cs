@@ -10,6 +10,7 @@ namespace MovieAPI.Infrastructure.HttpClients
 {
     public class HttpTmdbMovieRepository<TMedia, TMediaDTO> : IHttpMediaRepository<TMedia> where TMedia : MediaBase
     {
+        private const string SearchUrl = "search/";
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
         private readonly string _mediaTypeUrl;
@@ -21,20 +22,19 @@ namespace MovieAPI.Infrastructure.HttpClients
             _mediaTypeUrl = MediaTypeHelper.DetermineMediaTypeUrl<TMedia>();
         }
 
-        public async Task<Response<TMedia>> SearchMediaItemsByNameAsync(string name)
+        public async Task<Response<TMedia>> SearchMediaItemsByNameAsync(string name, int page)
         {
-            var searchUrl = "search/";
             var queryParameters = new Dictionary<string, string?>()
             {
                 ["query"] = name,
                 ["include_adult"] = false.ToString(),
                 ["language"] = "en-US",
-                ["page"] = "1"
+                ["page"] = page.ToString(),
             };
 
             var queryString = queryParameters.ConvertToQueryParameters();
             using HttpResponseMessage httpResponse = await _httpClient
-                .GetAsync(searchUrl + _mediaTypeUrl + queryString)
+                .GetAsync(SearchUrl + _mediaTypeUrl + queryString)
                 .ConfigureAwait(false);
             httpResponse.EnsureSuccessStatusCode();
             var responseDTO = await httpResponse.Content.ReadFromJsonAsync<ResponseDTO<TMediaDTO>>();

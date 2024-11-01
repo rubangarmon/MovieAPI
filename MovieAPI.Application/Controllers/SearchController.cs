@@ -27,7 +27,7 @@ public class SearchController : ControllerBase
     {
         var validationResult = await _validator.ValidateAsync(request);
         if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
-        var res = await _findService.FindMovieByNameAsync(request.Name);
+        var res = await _findService.FindMovieByNameAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
     }
@@ -38,7 +38,7 @@ public class SearchController : ControllerBase
     {
         var validationResult = await _validator.ValidateAsync(request);
         if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
-        var res = await _findService.FindTvByNameAsync(request.Name);
+        var res = await _findService.FindTvByNameAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
     }
@@ -51,7 +51,7 @@ public class SearchController : ControllerBase
         var validationResult = await _validator.ValidateAsync(request);
         if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
 
-        var res = await _findService.SearchMultiAsync(request.Name);
+        var res = await _findService.SearchMultiAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
     }
