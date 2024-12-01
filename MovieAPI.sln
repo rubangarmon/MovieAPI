@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.Application", "MovieAPI.Application\MovieAPI.Application.csproj", "{22467EFE-1E0A-4EE8-A108-2986C7EE0ED4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieAPI.Application", "MovieAPI.Application\MovieAPI.Application.csproj", "{22467EFE-1E0A-4EE8-A108-2986C7EE0ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.Core", "MovieAPI.Core\MovieAPI.Core.csproj", "{8A4CF2E6-E811-4445-8E13-FD609A3D4E1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieAPI.Core", "MovieAPI.Core\MovieAPI.Core.csproj", "{8A4CF2E6-E811-4445-8E13-FD609A3D4E1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.Infrastructure", "MovieAPI.Infrastructure\MovieAPI.Infrastructure.csproj", "{93A27745-2284-45C3-8D47-EC0FDC37C451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieAPI.Infrastructure", "MovieAPI.Infrastructure\MovieAPI.Infrastructure.csproj", "{93A27745-2284-45C3-8D47-EC0FDC37C451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.ServiceModel", "MovieAPI.ServiceModel\MovieAPI.ServiceModel.csproj", "{C95B7776-02B4-4EDB-8F05-91954D54967A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieAPI.ServiceModel", "MovieAPI.ServiceModel\MovieAPI.ServiceModel.csproj", "{C95B7776-02B4-4EDB-8F05-91954D54967A}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3873DE34-CC55-403F-BCBD-2A8F2E55277F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C95B7776-02B4-4EDB-8F05-91954D54967A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C95B7776-02B4-4EDB-8F05-91954D54967A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C95B7776-02B4-4EDB-8F05-91954D54967A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3873DE34-CC55-403F-BCBD-2A8F2E55277F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3873DE34-CC55-403F-BCBD-2A8F2E55277F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3873DE34-CC55-403F-BCBD-2A8F2E55277F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3873DE34-CC55-403F-BCBD-2A8F2E55277F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

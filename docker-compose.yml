@@ -1,0 +1,10 @@
+services:
+  movieapi.application:
+    image: ${DOCKER_REGISTRY-}movieapiapplication
+    build:
+      context: .
+      dockerfile: MovieAPI.Application/Dockerfile
+    ports:
+        - "5000:80"
+        - "5001:443"
+  
