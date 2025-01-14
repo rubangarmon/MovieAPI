@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MovieAPI.Core.Models
 {
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(Movie), "movie")]
+    [JsonDerivedType(typeof(TvSerie), "tvSerie")]
     public abstract class MediaBase
     {
         public int Id { get; set; }
