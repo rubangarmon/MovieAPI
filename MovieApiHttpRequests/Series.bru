@@ -1,0 +1,16 @@
+meta {
+  name: Series
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:5256/api/Search/series?Name=lord%20of%20the%20rings&Page=1
+  body: none
+  auth: none
+}
+
+params:query {
+  Name: lord of the rings
+  Page: 1
+}
