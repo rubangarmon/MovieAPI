@@ -12,7 +12,7 @@
         ],
         "id": 120,
         "original_language": "en",
-        "original_title": "The Lord of the Rings: The Fellowship of the Ring",
+        "original_title": "The Lord of the Rings: The Fellowship of the Ring lo",
         "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
         "popularity": 82.454,
         "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
@@ -787,5 +787,402 @@
     ],
     "total_pages": 4,
     "total_results": 61
+  },
+  "multi":{
+    "page": 1,
+    "results": [
+      {
+        "backdrop_path": "/A6vAMO3myroRfBwSZetY4GVqaW4.jpg",
+        "id": 839033,
+        "title": "The Lord of the Rings: The War of the Rohirrim",
+        "original_title": "The Lord of the Rings: The War of the Rohirrim",
+        "overview": "183 years before the events chronicled in the original trilogy, a sudden attack by Wulf, a clever and ruthless Dunlending lord seeking vengeance for the death of his father, forces Helm Hammerhand and his people to make a daring last stand in the ancient stronghold of the Hornburg. Finding herself in an increasingly desperate situation, Héra, the daughter of Helm, must summon the will to lead the resistance against a deadly enemy intent on their total destruction.",
+        "poster_path": "/hE9SAMyMSUGAPsHUGdyl6irv11v.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          16,
+          14,
+          28,
+          12
+        ],
+        "popularity": 2669.031,
+        "release_date": "2024-12-05",
+        "video": false,
+        "vote_average": 6.6,
+        "vote_count": 245
+      },
+      {
+        "backdrop_path": "/ukewRnKD05Si7DkED2tSKBTXeEd.jpg",
+        "id": 84773,
+        "name": "The Lord of the Rings: The Rings of Power",
+        "original_name": "The Lord of the Rings: The Rings of Power",
+        "overview": "Beginning in a time of relative peace, we follow an ensemble cast of characters as they confront the re-emergence of evil to Middle-earth. From the darkest depths of the Misty Mountains, to the majestic forests of Lindon, to the breathtaking island kingdom of Númenor, to the furthest reaches of the map, these kingdoms and characters will carve out legacies that live on long after they are gone.",
+        "poster_path": "/mYLOqiStMxDK3fYZFirgrMt8z5d.jpg",
+        "media_type": "tv",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          10759,
+          10765,
+          18
+        ],
+        "popularity": 405.247,
+        "first_air_date": "2022-09-01",
+        "vote_average": 7.3,
+        "vote_count": 3140,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "backdrop_path": "/z51Wzj94hvAIsWfknifKTqKJRwp.jpg",
+        "id": 120,
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "original_title": "The Lord of the Rings: The Fellowship of the Ring",
+        "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+        "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          12,
+          14,
+          28
+        ],
+        "popularity": 191.217,
+        "release_date": "2001-12-18",
+        "video": false,
+        "vote_average": 8.416,
+        "vote_count": 25404
+      },
+      {
+        "backdrop_path": "/5JrZAtyk3LwiiAWLW0kwz41XZJC.jpg",
+        "id": 122,
+        "title": "The Lord of the Rings: The Return of the King",
+        "original_title": "The Lord of the Rings: The Return of the King",
+        "overview": "As armies mass for a final battle that will decide the fate of the world--and powerful, ancient forces of Light and Dark compete to determine the outcome--one member of the Fellowship of the Ring is revealed as the noble heir to the throne of the Kings of Men. Yet, the sole hope for triumph over evil lies with a brave hobbit, Frodo, who, accompanied by his loyal friend Sam and the hideous, wretched Gollum, ventures deep into the very dark heart of Mordor on his seemingly impossible quest to destroy the Ring of Power.​",
+        "poster_path": "/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          12,
+          14,
+          28
+        ],
+        "popularity": 181.582,
+        "release_date": "2003-12-17",
+        "video": false,
+        "vote_average": 8.5,
+        "vote_count": 24443
+      },
+      {
+        "backdrop_path": "/TXSxV23MWYkezZ3219gtgcSX6n.jpg",
+        "id": 123,
+        "title": "The Lord of the Rings",
+        "original_title": "The Lord of the Rings",
+        "overview": "The Fellowship of the Ring embark on a journey to destroy the One Ring and end Sauron's reign over Middle-earth.",
+        "poster_path": "/liW0mjvTyLs7UCumaHhx3PpU4VT.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          12,
+          16,
+          14
+        ],
+        "popularity": 37.1,
+        "release_date": "1978-11-15",
+        "video": false,
+        "vote_average": 6.6,
+        "vote_count": 919
+      },
+      {
+        "backdrop_path": "/6G73mNyooWAEQTpckPSnFxFoNmc.jpg",
+        "id": 121,
+        "title": "The Lord of the Rings: The Two Towers",
+        "original_title": "The Lord of the Rings: The Two Towers",
+        "overview": "Frodo Baggins and the other members of the Fellowship continue on their sacred quest to destroy the One Ring--but on separate paths. Their destinies lie at two towers--Orthanc Tower in Isengard, where the corrupt wizard Saruman awaits, and Sauron's fortress at Barad-dur, deep within the dark lands of Mordor. Frodo and Sam are trekking to Mordor to destroy the One Ring of Power while Gimli, Legolas and Aragorn search for the orc-captured Merry and Pippin. All along, nefarious wizard Saruman awaits the Fellowship members at the Orthanc Tower in Isengard.",
+        "poster_path": "/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          12,
+          14,
+          28
+        ],
+        "popularity": 138.502,
+        "release_date": "2002-12-18",
+        "video": false,
+        "vote_average": 8.4,
+        "vote_count": 22045
+      },
+      {
+        "backdrop_path": "/hFBcrrP7XzWWHEyqk2Q4pHSBV55.jpg",
+        "id": 250033,
+        "name": "Icons Unearthed: Lord of The Rings",
+        "original_name": "Icons Unearthed: Lord of The Rings",
+        "overview": "Through trials, false starts, injuries and near death experiences, the team behind \"The Lord of the Rings\" built a whole world from scratch, invented new technologies, making and breaking a studio in the process.",
+        "poster_path": "/i3nYXlRFcl7SBwcDGFg2r7BP6wR.jpg",
+        "media_type": "tv",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          99
+        ],
+        "popularity": 8.074,
+        "first_air_date": "2024-03-20",
+        "vote_average": 7,
+        "vote_count": 3,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "backdrop_path": "/1mtjTIcwlo6YmGrJEr7fnGeITx3.jpg",
+        "id": 1016184,
+        "title": "The Lord of the Rings: The Rings of Power Global Fan Screening",
+        "original_title": "The Lord of the Rings: The Rings of Power Global Fan Screening",
+        "overview": "An edited version of the first two episodes of The Lord of the Rings: The Rings of Power, shown exclusively to fans in cinemas around the world in August 2022. In a time of relative peace, an ensemble cast of characters confronts the re-emergence of evil to Middle-earth.",
+        "poster_path": "/toEUQXyDut4QecjC3RAdBoDVlUe.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          14,
+          12,
+          18
+        ],
+        "popularity": 24.203,
+        "release_date": "2022-08-31",
+        "video": true,
+        "vote_average": 7,
+        "vote_count": 41
+      },
+      {
+        "backdrop_path": null,
+        "id": 453779,
+        "title": "A Passage to Middle-Earth: Making of 'Lord of the Rings'",
+        "original_title": "A Passage to Middle-Earth: Making of 'Lord of the Rings'",
+        "overview": "The making of Peter Jackson's adaptation of Tolkien's classic work.",
+        "poster_path": "/hvGMNY2de55UZDDX5EYYKtm38DV.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          99,
+          10770,
+          14,
+          12
+        ],
+        "popularity": 6.31,
+        "release_date": "2001-12-09",
+        "video": false,
+        "vote_average": 6.8,
+        "vote_count": 9
+      },
+      {
+        "backdrop_path": "/rNteideXyAZabqh7IMiEIFM9TBQ.jpg",
+        "id": 1090869,
+        "title": "Lord of the Rings: The Hunt for Gollum",
+        "original_title": "Lord of the Rings: The Hunt for Gollum",
+        "overview": "A new film based on the novels to be released in 2026.",
+        "poster_path": "/544AyItQjukqCEqLPmdSjsRJDN4.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          14
+        ],
+        "popularity": 4.218,
+        "release_date": "",
+        "video": false,
+        "vote_average": 0,
+        "vote_count": 0
+      },
+      {
+        "backdrop_path": "/uQXfdsnWDZx2AXq6hnieItmAIM7.jpg",
+        "id": 1035526,
+        "title": "Forging Through the Darkness: The Ralph Bakshi Vision for 'The Lord of the Rings'",
+        "original_title": "Forging Through the Darkness: The Ralph Bakshi Vision for 'The Lord of the Rings'",
+        "overview": "A deep look at how Ralph Bakshi made his version of Lord of the Rings (1978). With Ralph Bakshi, Victoria Bakshi-Yudis, Chris Conkling, Timothy Galfas, Scott Kleinman, & Tom Tataranowicz.",
+        "poster_path": "/8kAERyt2srDURgvYOvMm5NVeHLx.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          99
+        ],
+        "popularity": 2.649,
+        "release_date": "2010-04-10",
+        "video": false,
+        "vote_average": 10,
+        "vote_count": 1
+      },
+      {
+        "backdrop_path": null,
+        "id": 651342,
+        "title": "J.R.R. Tolkien and the Birth of \"The Lord of the Rings\" and \"The Hobbit\"",
+        "original_title": "J.R.R. Tolkien and the Birth of \"The Lord of the Rings\" and \"The Hobbit\"",
+        "overview": "In a house in Oxford lived a remarkable man called J.R.R. Tolkien who told stories that thrilled the world. To this very day readers and film audiences are enjoying his magnificent epics “THE LORD OF THE RINGS” and “The Hobbit” – adapted to the big screen by producer, Peter Jackson. Although everybody has heard of Tolkien’s writing, very few people could tell you much about the man responsible for creating the best loved magical creatures that have become household names. This program will give you a real insight into the man behind the legends of “THE LORD OF THE RINGS,” and the people and places that shaped his unique literary genius. From the rolling English countryside to the sooty streets of Industrial Birmingham, the dreaming spires of Oxford to the World War I trenches of the blood soaked Somme; this is the story of the quintessential English College Professor who made epic mythology and legend accessible to one and all.",
+        "poster_path": "/jp0NQtIQTwen5vHBNcCK2iLKoY7.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          99
+        ],
+        "popularity": 1.379,
+        "release_date": "2004-12-31",
+        "video": false,
+        "vote_average": 5.583,
+        "vote_count": 12
+      },
+      {
+        "backdrop_path": null,
+        "id": 945739,
+        "title": "Darla's Book Club: Discussing the Lord of the Rings",
+        "original_title": "Darla's Book Club: Discussing the Lord of the Rings",
+        "overview": "",
+        "poster_path": "/cBdXohO3uOFnhI0NGs6TOpqabBt.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [],
+        "popularity": 0.126,
+        "release_date": "2021-11-26",
+        "video": false,
+        "vote_average": 10,
+        "vote_count": 2
+      },
+      {
+        "backdrop_path": null,
+        "id": 296260,
+        "title": "Master of the Rings: The Unauthorized Story Behind J.R.R. Tolkien's \"Lord of the Rings\"",
+        "original_title": "Master of the Rings: The Unauthorized Story Behind J.R.R. Tolkien's \"Lord of the Rings\"",
+        "overview": "This documentary examines the social and cultural underpinnings of the trilogy of The Lord of the Rings by J.R.R. Tolkien, in an attempt to understand the work's phenomenal success and influence. The program looks for answers in the author's sources of inspiration, from the folk legends of Norway to the field of linguistics of which Tolkien was a lifelong student. It finds that the deep chord the story strikes owes its resonance to the author's use of archetypal imagery and language. Many examples of these recurrent themes and images are given, with readings from the work and other literature. Interviews with the book's illustrators, the brothers Hildebrandt, speak to the power of the imagery in the classic story. Scholars, Tolkien's children, and the author himself provide insight into the mythic themes and the spell they have cast over the vast readership of The Lord of the Rings.",
+        "poster_path": "/7fzIaIcpj4f0O3IHE65qGqlNcuL.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          99
+        ],
+        "popularity": 1.947,
+        "release_date": "2001-12-04",
+        "video": false,
+        "vote_average": 8.4,
+        "vote_count": 5
+      },
+      {
+        "backdrop_path": "/bf9zr6vJ9FRLqUvkDcewq0YJyCL.jpg",
+        "id": 155586,
+        "title": "Creating the Lord of the Rings Symphony",
+        "original_title": "Creating the Lord of the Rings Symphony",
+        "overview": "Creating The Lord of the Rings Symphony includes excerpts of live concert footage from The Lord of the Rings Symphony: Six Movements for Orchestra, Chorus and Soloists, documentary commentary by Howard Shore, and the illustrations of Alan Lee and John Howe.",
+        "poster_path": "/qTCaimvGReZqCPITJxZ8iym3prf.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          10402
+        ],
+        "popularity": 0.001,
+        "release_date": "2004-12-14",
+        "video": false,
+        "vote_average": 6.9,
+        "vote_count": 8
+      },
+      {
+        "backdrop_path": "/4lJEWkfFT4sSYNBfkRTbN8MC6ZB.jpg",
+        "id": 1264381,
+        "title": "The Lord of the Rings the Musical - Original London Production - Promotional Documentary",
+        "original_title": "The Lord of the Rings the Musical - Original London Production - Promotional Documentary",
+        "overview": "This 15-minute DVD follows the adaptation of LOTR for the stage, and features rehearsal and show footage of the initial production in Toronto as well as interviews with the creative team now preparing for the London production.",
+        "poster_path": "/xYeqKHapsIH9uPSrzoBPUvMtE0M.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          99
+        ],
+        "popularity": 4.957,
+        "release_date": "2007-01-01",
+        "video": false,
+        "vote_average": 10,
+        "vote_count": 1
+      },
+      {
+        "backdrop_path": "/hR9COX1d0NJEXJEKpabSEJPUtmO.jpg",
+        "id": 1413729,
+        "title": "The Lord of the Rings | The Battle at Barad-dûr™ (ft. LEGO)",
+        "original_title": "The Lord of the Rings | The Battle at Barad-dûr™ (ft. LEGO)",
+        "overview": "Frodo Baggins, Hobbit of the Shire, has completed The Quest of The Ring thanks to Samwise Gamgee, his ever-loyal friend, and, inadvertently, Gollum. With the One Ring destroyed in the fires of Mount Doom, the foundations of Barad Dûr give way, and Sauron, along with the Army of Mordor, are defeated.",
+        "poster_path": "/dP0dzwJxcmtlfjT9GHkNigr23Vk.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          14,
+          16,
+          28,
+          10752
+        ],
+        "popularity": 0,
+        "release_date": "2024-06-01",
+        "video": true,
+        "vote_average": 10,
+        "vote_count": 1
+      },
+      {
+        "backdrop_path": "/bCDn6Bzfjjiov7Reu5MVZIhVQJm.jpg",
+        "id": 1362,
+        "title": "The Hobbit",
+        "original_title": "The Hobbit",
+        "overview": "Bilbo Baggins the Hobbit was just minding his own business, when his occasional visitor Gandalf the Wizard drops in one night. One by one, a whole group of dwarves drop in, and before he knows it, Bilbo has joined their quest to reclaim their kingdom, taken from them by the evil dragon Smaug. The only problem is that Gandalf has told the dwarves that Bilbo is an expert burglar, but he isn't...",
+        "poster_path": "/2ohvyMPhvjftLrM6S6Ljr6QrL0u.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          10751,
+          14,
+          16,
+          12,
+          10770
+        ],
+        "popularity": 24.328,
+        "release_date": "1977-11-27",
+        "video": false,
+        "vote_average": 6.5,
+        "vote_count": 315
+      },
+      {
+        "backdrop_path": "/fBzwSM5zl4xp9L3rFu1PihmY0vh.jpg",
+        "id": 1361,
+        "title": "The Return of the King",
+        "original_title": "The Return of the King",
+        "overview": "Two Hobbits struggle to destroy the Ring in Mount Doom while their friends desperately fight evil Lord Sauron's forces in a final battle.",
+        "poster_path": "/sC5j2cUgGe1IQ33WdLYx6G4KiDm.jpg",
+        "media_type": "movie",
+        "adult": false,
+        "original_language": "en",
+        "genre_ids": [
+          16,
+          14,
+          12
+        ],
+        "popularity": 18.907,
+        "release_date": "1980-05-11",
+        "video": false,
+        "vote_average": 6.41,
+        "vote_count": 201
+      }
+    ],
+    "total_pages": 2,
+    "total_results": 28
   }
 }

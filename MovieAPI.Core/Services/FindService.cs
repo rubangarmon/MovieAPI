@@ -7,11 +7,13 @@ public class FindService : IFindService
 {
     private readonly IHttpMediaRepository<Movie> _httpMovieService;
     private readonly IHttpMediaRepository<TvSerie> _httpTvService;
+    private readonly IHttpMediaRepository<MediaBase> _httpMultiService;
     private const int PageSize = 20;
-    public FindService(IHttpMediaRepository<Movie> httpMovieService, IHttpMediaRepository<TvSerie> httpTvService)
+    public FindService(IHttpMediaRepository<Movie> httpMovieService, IHttpMediaRepository<TvSerie> httpTvService, IHttpMediaRepository<MediaBase> httpMultiService)
     {
         _httpMovieService = httpMovieService;
         _httpTvService = httpTvService;
+        _httpMultiService = httpMultiService;
     }
 
     public async Task<Response<Movie>> FindMovieByNameAsync(string name, int page)
@@ -19,7 +21,14 @@ public class FindService : IFindService
     
     public async Task<Response<TvSerie>> FindTvByNameAsync(string name, int page)
         => await _httpTvService.SearchMediaItemsByNameAsync(name, page);
+
     public async Task<Response<MediaBase>?> SearchMultiAsync(string name, int page = 1)
+    {
+        var response = await _httpMultiService.SearchMediaItemsByNameAsync(name, page);
+        return response;
+    }
+
+    public async Task<Response<MediaBase>?> SearchMultiByMediaTasksAsync(string name, int page = 1)
     {
         var movieSearchTask = _httpMovieService.SearchMediaItemsByNameAsync(name, page);
         var tvSearchTask = _httpTvService.SearchMediaItemsByNameAsync(name, page);

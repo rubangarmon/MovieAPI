@@ -45,6 +45,7 @@ builder.Services.AddScoped<IFindService, FindService>();
 builder.Services.AddTransient<IMovieApiProblemDetailsFactory, MovieApiProblemDetailsFactory>();
 builder.Services.AddHttpClient<IHttpMediaRepository<Movie>, HttpTmdbMovieRepository<Movie, MovieDTO>>(fc);
 builder.Services.AddHttpClient<IHttpMediaRepository<TvSerie>, HttpTmdbMovieRepository<TvSerie, TvSerieDTO>>(fc);
+builder.Services.AddHttpClient<IHttpMediaRepository<MediaBase>, HttpTmdbMovieRepository<MediaBase, MultiDTO>>(fc);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
