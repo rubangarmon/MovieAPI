@@ -10,11 +10,11 @@ namespace MovieAPI.Application.Controllers;
 [Route("api/[controller]")]
 public class SearchController : ControllerBase
 {
-    private readonly IFindService _findService;
+    private readonly ISearchService _findService;
     private readonly IValidator<MediaRequest> _validator;
 
     public SearchController(
-        IFindService findService,
+        ISearchService findService,
         IValidator<MediaRequest> validator)
     {
         _validator = validator;
@@ -51,7 +51,7 @@ public class SearchController : ControllerBase
         var validationResult = await _validator.ValidateAsync(request);
         if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
 
-        var res = await _findService.SearchMultiAsync(request.Name, request.Page);
+        var res = await _findService.SearchMultiByMediaTasksAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
     }

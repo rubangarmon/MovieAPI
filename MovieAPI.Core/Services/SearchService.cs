@@ -3,13 +3,13 @@ using MovieAPI.Core.Models;
 
 namespace MovieAPI.Core.Services;
 
-public class FindService : IFindService
+public class SearchService : ISearchService
 {
     private readonly IHttpMediaRepository<Movie> _httpMovieService;
     private readonly IHttpMediaRepository<TvSerie> _httpTvService;
     private readonly IHttpMediaRepository<MediaBase> _httpMultiService;
     private const int PageSize = 20;
-    public FindService(IHttpMediaRepository<Movie> httpMovieService, IHttpMediaRepository<TvSerie> httpTvService, IHttpMediaRepository<MediaBase> httpMultiService)
+    public SearchService(IHttpMediaRepository<Movie> httpMovieService, IHttpMediaRepository<TvSerie> httpTvService, IHttpMediaRepository<MediaBase> httpMultiService)
     {
         _httpMovieService = httpMovieService;
         _httpTvService = httpTvService;

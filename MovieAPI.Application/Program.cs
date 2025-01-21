@@ -41,7 +41,7 @@ Action<HttpClient> fc = client =>
 };
 
 builder.Services.AddScoped<IValidator<MediaRequest>, MediaRequestValidator>();
-builder.Services.AddScoped<IFindService, FindService>();
+builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddTransient<IMovieApiProblemDetailsFactory, MovieApiProblemDetailsFactory>();
 builder.Services.AddHttpClient<IHttpMediaRepository<Movie>, HttpTmdbMovieRepository<Movie, MovieDTO>>(fc);
 builder.Services.AddHttpClient<IHttpMediaRepository<TvSerie>, HttpTmdbMovieRepository<TvSerie, TvSerieDTO>>(fc);
