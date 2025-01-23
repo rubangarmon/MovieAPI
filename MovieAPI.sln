@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.ServiceModel", "MovieAPI.ServiceModel\MovieAPI.ServiceModel.csproj", "{C95B7776-02B4-4EDB-8F05-91954D54967A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.UnitTests", "MovieAPI.UnitTests\MovieAPI.UnitTests.csproj", "{4BB9C009-2D70-4E32-82DF-1246449EC6F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C95B7776-02B4-4EDB-8F05-91954D54967A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C95B7776-02B4-4EDB-8F05-91954D54967A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C95B7776-02B4-4EDB-8F05-91954D54967A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB9C009-2D70-4E32-82DF-1246449EC6F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB9C009-2D70-4E32-82DF-1246449EC6F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB9C009-2D70-4E32-82DF-1246449EC6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB9C009-2D70-4E32-82DF-1246449EC6F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
