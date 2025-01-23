@@ -2,7 +2,9 @@
 using MovieAPI.Core.Helpers;
 using MovieAPI.Core.HttpClients;
 using MovieAPI.Core.Models;
+using MovieAPI.Core.Utils;
 using MovieAPI.Infrastructure.Extensions;
+using MovieAPI.Infrastructure.MappingProfiles;
 using MovieAPI.ServiceModel.DTOs;
 using System.Net.Http.Json;
 
@@ -24,66 +26,21 @@ public class HttpTmdbMovieRepository<TMedia, TMediaDTO> : IHttpMediaRepository<T
 
     public async Task<Response<TMedia>> SearchMediaItemsByNameAsync(string name, int page)
     {
-        var queryParameters = new Dictionary<string, string?>()
-        {
-            ["query"] = name,
-            ["include_adult"] = false.ToString(),
-            ["language"] = "en-US",
-            ["page"] = page.ToString(),
-        };
-
-        var queryString = queryParameters.ConvertToQueryParameters();
+        var queryString = QueryParameterFactory
+            .CreateQueryParameterByName(name, page)
+            .ConvertToQueryParameters();
         using HttpResponseMessage httpResponse = await _httpClient
             .GetAsync(SearchUrl + _mediaTypeUrl + queryString)
             .ConfigureAwait(false);
         httpResponse.EnsureSuccessStatusCode();
         var responseDTO = await httpResponse.Content.ReadFromJsonAsync<ResponseDTO<TMediaDTO>>();
-        if (typeof(TMediaDTO) == typeof(MultiDTO))
-        {
-            var res = MapMultiToMediaBase(responseDTO);
-            return res;
-        }
+        if (IsMulti())
+            return MapMulti(responseDTO);
         var response = _mapper.Map<Response<TMedia>>(responseDTO);
         return response ?? new Response<TMedia>();
     }
 
-    private static Response<TMedia> MapMultiToMediaBase(ResponseDTO<TMediaDTO> responseDTO)
-    {
-        var results = responseDTO.Results.Select(item => HttpTmdbMovieRepository<TMedia, TMediaDTO>.CreateMediaBase((MultiDTO)(object)item)).ToList();
-
-        return new Response<TMedia>
-        {
-            Results = (IEnumerable<TMedia>)results,
-            TotalResults = responseDTO.TotalResults,
-            TotalPages = responseDTO.TotalPages,
-            Page = responseDTO.Page
-        };
-    }
-
-    private static MediaBase CreateMediaBase(MultiDTO item)
-    {
-        return item.MediaType switch
-        {
-            "movie" => new Movie
-            {
-                Id = item.Id,
-                OriginalTitle = item.Title,
-                Overview = item.Overview,
-                PosterPath = item.PosterPath,
-                ReleaseDate = item.ReleaseDate,
-                IsAdult = item.IsAdult
-            },
-            "tv" => new TvSerie
-            {
-                Id = item.Id,
-                Name = item.Name,
-                OriginalName = item.OriginalName,
-                Overview = item.Overview,
-                PosterPath = item.PosterPath,
-                FirstAirDate = item.FirstAirDate,
-                IsAdult = item.IsAdult
-            },
-            _ => throw new ArgumentException("Unknown media type")
-        };
-    }
+    private static bool IsMulti() => typeof(TMediaDTO) == typeof(MultiDTO);
+    private static Response<TMedia> MapMulti(ResponseDTO<TMediaDTO> responseDTO)
+        => MultiMapper.MapMultiToMediaBase(responseDTO as ResponseDTO<MultiDTO>) as Response<TMedia>;
 }
