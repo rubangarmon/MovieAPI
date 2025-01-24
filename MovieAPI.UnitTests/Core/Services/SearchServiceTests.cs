@@ -115,12 +115,19 @@ namespace MovieAPI.UnitTests.Core.Services
             var result = await _searchService.SearchMultiByMediaTasksAsync("Test", 1);
 
             // Assert
-            result.Results.Count().ShouldBe(4);
-            result.Results.ShouldContain(media => media.Id == 1 && media.Title == "Movie 1");
-            result.Results.ShouldContain(media => media.Id == 2 && media.Title == "TvSerie 2");
-            result.TotalResults.ShouldBe(4);
-            result.TotalPages.ShouldBe(1);
-            result.Page.ShouldBe(1);
+            result?.Results.Count().ShouldBe(4);
+            result?.Results.ShouldContain(media => media.Id == 1 && media.Title == "Movie 1");
+            result?.Results.ShouldContain(media => media.Id == 2 && media.Title == "TvSerie 2");
+            var movieResult = result?.Results.FirstOrDefault( m => m is Movie ) as Movie;
+            movieResult?.IsAdult.ShouldBeTrue();
+            movieResult?.Overview.ShouldNotBeNullOrEmpty();
+            movieResult?.Title.ShouldNotBeNullOrEmpty();
+            movieResult?.OriginalTitle.ShouldNotBeNullOrEmpty();
+            movieResult?.PosterPath.ShouldNotBeNullOrEmpty();
+            movieResult?.ReleaseDate .ShouldNotBeNullOrEmpty();
+            result?.TotalResults.ShouldBe(4);
+            result?.TotalPages.ShouldBe(1);
+            result?.Page.ShouldBe(1);
         }
     }
 }
