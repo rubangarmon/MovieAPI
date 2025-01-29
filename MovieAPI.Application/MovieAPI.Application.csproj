@@ -17,5 +17,8 @@
     <ProjectReference Include="..\MovieAPI.Infrastructure\MovieAPI.Infrastructure.csproj" />
     <ProjectReference Include="..\MovieAPI.ServiceModel\MovieAPI.ServiceModel.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="MovieAPI.IntegrationTests" />
+  </ItemGroup>
 
 </Project>
