@@ -51,7 +51,7 @@ public class SearchController : ControllerBase
         var validationResult = await _validator.ValidateAsync(request);
         if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
 
-        var res = await _findService.SearchMultiByMediaTasksAsync(request.Name, request.Page);
+        var res = await _findService.SearchMultiAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
     }

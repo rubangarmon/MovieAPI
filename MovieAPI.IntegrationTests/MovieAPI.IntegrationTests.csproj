@@ -27,6 +27,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="MockResponses\GetMultiResponsePage2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="MockResponses\GetMultiResponsePage1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="MockResponses\GetTvSeriesResponsePage2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="MockResponses\GetTvSeriesResponsePage1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="MockResponses\GetMoviesResponsePage2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
