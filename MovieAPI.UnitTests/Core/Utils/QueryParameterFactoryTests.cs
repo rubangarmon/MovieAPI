@@ -1,5 +1,4 @@
 ﻿using MovieAPI.Core.Utils;
-using Shouldly;
 
 namespace MovieAPI.UnitTests.Core.Utils;
 

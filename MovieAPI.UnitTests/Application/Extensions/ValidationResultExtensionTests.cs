@@ -1,8 +1,5 @@
 ﻿using FluentValidation.Results;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MovieAPI.Application.Extensions;
-using Shouldly;
-using Xunit;
 
 
 namespace MovieAPI.UnitTests.Application.Extensions;

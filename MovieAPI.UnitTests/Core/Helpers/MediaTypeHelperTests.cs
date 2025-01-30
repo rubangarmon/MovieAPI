@@ -1,6 +1,5 @@
 ﻿using MovieAPI.Core.Attributes;
 using MovieAPI.Core.Helpers;
-using Shouldly;
 
 namespace MovieAPI.UnitTests.Core.Helpers;
 

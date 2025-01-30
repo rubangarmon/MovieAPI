@@ -2,16 +2,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Moq;
 using MovieAPI.Application.Middlewares;
 using MovieAPI.Core.Exceptions;
-using Shouldly;
-using System;
 using System.Diagnostics;
 using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace MovieAPI.UnitTests.Application.Middlewares;
 

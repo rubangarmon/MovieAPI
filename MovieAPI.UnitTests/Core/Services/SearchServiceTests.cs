@@ -1,9 +1,7 @@
-﻿using Moq;
-using MovieAPI.Core.HttpClients;
+﻿using MovieAPI.Core.HttpClients;
 using MovieAPI.Core.Models;
 using MovieAPI.Core.Services;
 using MovieAPI.UnitTests.Mocks;
-using Shouldly;
 
 namespace MovieAPI.UnitTests.Core.Services
 {
@@ -118,13 +116,13 @@ namespace MovieAPI.UnitTests.Core.Services
             result?.Results.Count().ShouldBe(4);
             result?.Results.ShouldContain(media => media.Id == 1 && media.Title == "Movie 1");
             result?.Results.ShouldContain(media => media.Id == 2 && media.Title == "TvSerie 2");
-            var movieResult = result?.Results.FirstOrDefault( m => m is Movie ) as Movie;
+            var movieResult = result?.Results.FirstOrDefault(m => m is Movie) as Movie;
             movieResult?.IsAdult.ShouldBeTrue();
             movieResult?.Overview.ShouldNotBeNullOrEmpty();
             movieResult?.Title.ShouldNotBeNullOrEmpty();
             movieResult?.OriginalTitle.ShouldNotBeNullOrEmpty();
             movieResult?.PosterPath.ShouldNotBeNullOrEmpty();
-            movieResult?.ReleaseDate .ShouldNotBeNullOrEmpty();
+            movieResult?.ReleaseDate.ShouldNotBeNullOrEmpty();
             result?.TotalResults.ShouldBe(4);
             result?.TotalPages.ShouldBe(1);
             result?.Page.ShouldBe(1);

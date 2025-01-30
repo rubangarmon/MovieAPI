@@ -1,18 +1,11 @@
 ﻿using AutoMapper;
-using Moq;
 using Moq.Protected;
 using MovieAPI.Core.Models;
 using MovieAPI.Infrastructure.HttpClients;
 using MovieAPI.ServiceModel.DTOs;
 using MovieAPI.UnitTests.Mocks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Shouldly;
+using System.Net.Http.Json;
 
 namespace MovieAPI.UnitTests.Infrastructure.HttpClients;
 

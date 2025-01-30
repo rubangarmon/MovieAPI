@@ -1,7 +1,6 @@
 using MovieAPI.Core.Models;
 using MovieAPI.Infrastructure.MappingProfiles;
 using MovieAPI.ServiceModel.DTOs;
-using Shouldly;
 
 namespace MovieAPI.UnitTests.Infrastructure.MappingProfiles;
 
