@@ -26,7 +26,7 @@ public class SearchController : ControllerBase
     public async Task<IActionResult> SearchMoviesByName([FromQuery] MediaRequest request)
     {
         var validationResult = await _validator.ValidateAsync(request);
-        if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
+        if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrorAsValidationProblem());
         var res = await _findService.FindMovieByNameAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
@@ -37,7 +37,7 @@ public class SearchController : ControllerBase
     public async Task<IActionResult> SearchSeriesByName([FromQuery] MediaRequest request)
     {
         var validationResult = await _validator.ValidateAsync(request);
-        if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
+        if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrorAsValidationProblem());
         var res = await _findService.FindTvByNameAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
@@ -49,9 +49,9 @@ public class SearchController : ControllerBase
     public async Task<IActionResult> SearchMulti([FromQuery] MediaRequest request)
     {
         var validationResult = await _validator.ValidateAsync(request);
-        if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrosAsValidationProblem());
+        if (!validationResult.IsValid) return ValidationProblem(validationResult.SendErrorAsValidationProblem());
 
-        var res = await _findService.SearchMultiByMediaTasksAsync(request.Name, request.Page);
+        var res = await _findService.SearchMultiAsync(request.Name, request.Page);
         if (res == null) return NotFound();
         return Ok(res);
     }

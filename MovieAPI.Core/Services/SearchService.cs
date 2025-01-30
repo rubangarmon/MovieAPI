@@ -3,18 +3,15 @@ using MovieAPI.Core.Models;
 
 namespace MovieAPI.Core.Services;
 
-public class SearchService : ISearchService
+public class SearchService(
+    IHttpMediaRepository<Movie> httpMovieService, 
+    IHttpMediaRepository<TvSerie> httpTvService, 
+    IHttpMediaRepository<MediaBase> httpMultiService) : ISearchService
 {
-    private readonly IHttpMediaRepository<Movie> _httpMovieService;
-    private readonly IHttpMediaRepository<TvSerie> _httpTvService;
-    private readonly IHttpMediaRepository<MediaBase> _httpMultiService;
+    private readonly IHttpMediaRepository<Movie> _httpMovieService = httpMovieService;
+    private readonly IHttpMediaRepository<TvSerie> _httpTvService = httpTvService;
+    private readonly IHttpMediaRepository<MediaBase> _httpMultiService = httpMultiService;
     private const int PageSize = 20;
-    public SearchService(IHttpMediaRepository<Movie> httpMovieService, IHttpMediaRepository<TvSerie> httpTvService, IHttpMediaRepository<MediaBase> httpMultiService)
-    {
-        _httpMovieService = httpMovieService;
-        _httpTvService = httpTvService;
-        _httpMultiService = httpMultiService;
-    }
 
     public async Task<Response<Movie>> FindMovieByNameAsync(string name, int page)
         => await _httpMovieService.SearchMediaItemsByNameAsync(name, page);
@@ -28,7 +25,7 @@ public class SearchService : ISearchService
         return response;
     }
 
-    public async Task<Response<MediaBase>?> SearchMultiByMediaTasksAsync(string name, int page = 1)
+    public async Task<Response<MediaBase>> SearchMultiByMediaTasksAsync(string name, int page = 1)
     {
         var movieSearchTask = _httpMovieService.SearchMediaItemsByNameAsync(name, page);
         var tvSearchTask = _httpTvService.SearchMediaItemsByNameAsync(name, page);
