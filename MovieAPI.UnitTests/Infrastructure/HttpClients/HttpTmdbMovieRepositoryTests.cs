@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Shouldly;
 
-namespace MovieAPI.UnitTests.Infrastructure;
+namespace MovieAPI.UnitTests.Infrastructure.HttpClients;
 
 public class HttpTmdbMovieRepositoryTests
 {
@@ -82,7 +82,7 @@ public class HttpTmdbMovieRepositoryTests
         };
         var multiResponse = new Response<MediaBase>
         {
-            Results = new List<MediaBase> { new Movie { Id = 1} },
+            Results = new List<MediaBase> { new Movie { Id = 1 } },
             TotalResults = 1,
             TotalPages = 1,
             Page = 1
