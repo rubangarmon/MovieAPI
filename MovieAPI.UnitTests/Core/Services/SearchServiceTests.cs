@@ -124,7 +124,7 @@ namespace MovieAPI.UnitTests.Core.Services
             movieResult?.Title.ShouldNotBeNullOrEmpty();
             movieResult?.OriginalTitle.ShouldNotBeNullOrEmpty();
             movieResult?.PosterPath.ShouldNotBeNullOrEmpty();
-            movieResult?.ReleaseDate .ShouldNotBeNullOrEmpty();
+            movieResult?.ReleaseDate.ShouldNotBeNullOrEmpty();
             result?.TotalResults.ShouldBe(4);
             result?.TotalPages.ShouldBe(1);
             result?.Page.ShouldBe(1);

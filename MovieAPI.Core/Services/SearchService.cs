@@ -25,7 +25,7 @@ public class SearchService(
         return response;
     }
 
-    public async Task<Response<MediaBase>?> SearchMultiByMediaTasksAsync(string name, int page = 1)
+    public async Task<Response<MediaBase>> SearchMultiByMediaTasksAsync(string name, int page = 1)
     {
         var movieSearchTask = _httpMovieService.SearchMediaItemsByNameAsync(name, page);
         var tvSearchTask = _httpTvService.SearchMediaItemsByNameAsync(name, page);

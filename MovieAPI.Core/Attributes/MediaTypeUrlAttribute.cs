@@ -1,13 +1,8 @@
 ﻿namespace MovieAPI.Core.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class MediaTypeUrlAttribute : Attribute
+    public class MediaTypeUrlAttribute(string mediaTypeUrl) : Attribute
     {
-        public string MediaTypeUrl { get; }
-
-        public MediaTypeUrlAttribute(string mediaTypeUrl)
-        {
-            MediaTypeUrl = mediaTypeUrl;
-        }
+        public string MediaTypeUrl { get; } = mediaTypeUrl;
     }
 }
