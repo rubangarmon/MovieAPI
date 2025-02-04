@@ -11,7 +11,6 @@ using MovieAPI.Application.Commons.Exceptions;
 using MovieAPI.Application.Validators;
 using MovieAPI.Application.ContractsModels;
 using FluentValidation;
-using Microsoft.Extensions.Logging.EventLog;
 using MovieAPI.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 #pragma warning disable CA1416 // Validate platform compatibility
 builder.Logging
     .ClearProviders()
-    .AddConsole()
-    .AddEventLog(new EventLogSettings());
+    .AddConsole();
 #pragma warning restore CA1416 // Validate platform compatibility
 // Add services to the container.
 
