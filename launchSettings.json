@@ -6,6 +6,28 @@
       "serviceActions": {
         "movieapi.application": "StartDebugging"
       }
+    },
+    "FakeServer": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "movieapi.application": "StartDebugging"
+      },
+      "commandLineArgs": "-f docker-compose.yml -f docker-compose.fakeserver.yml",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "ExternalAPI": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "movieapi.application": "StartDebugging"
+      },
+      "commandLineArgs": "-f docker-compose.yml -f docker-compose.externalapi.yml",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
