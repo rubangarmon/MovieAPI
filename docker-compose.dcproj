@@ -10,13 +10,7 @@
     <DockerServiceName>movieapi.application</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-	  <None Include="docker-compose.fakeserver.yml">
-		  <DependentUpon>docker-compose.yml</DependentUpon>
-	  </None>
     <None Include="docker-compose.override.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
-    </None>
-    <None Include="docker-compose.vs.release.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.yml" />

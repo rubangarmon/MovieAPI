@@ -4,9 +4,20 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5000
       - ASPNETCORE_HTTPS_PORTS=5001
+      - HttpMovieRepository__BaseURL=http://fakeserver:3000/
     ports:
       - "5000:5000"
       - "5001:5001"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  fakeserver:
+    build:
+      context: ./FakeServer
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./FakeServer:/app
+    command: json-server --watch db.json --routes routes.json --host 0.0.0.0 --port 3000
+    ports:
+      - "3000:3000"

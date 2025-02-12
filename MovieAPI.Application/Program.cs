@@ -12,6 +12,7 @@ using MovieAPI.Application.Validators;
 using MovieAPI.Application.ContractsModels;
 using FluentValidation;
 using MovieAPI.Core.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,11 @@ builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile<DtoToEntity>();
 });
+
+builder.Configuration
+    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
 var httpMovieRepoOptions = builder.Configuration.GetSection(HttpMovieRepositoryOptions.OptionName).Get<HttpMovieRepositoryOptions>()!;
 Action<HttpClient> fc = client =>
 {

@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: MovieAPI.Application/Dockerfile
-    ports:
-      - "5000:5000"
-      - "5001:5001"
+    depends_on:
+      - fakeserver 
+    environment:
+      - HttpMovieRepository__BaseURL=https://api.themoviedb.org/3/
+      - HttpMovieRepository__UserAgent=movie-app-rb
