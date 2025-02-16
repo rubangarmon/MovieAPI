@@ -32,6 +32,7 @@ builder.Services.AddAutoMapper(config =>
 });
 
 builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 

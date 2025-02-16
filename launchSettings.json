@@ -2,9 +2,14 @@
   "profiles": {
     "Docker Compose": {
       "commandName": "DockerCompose",
+      "commandLineArgs": "-e HttpMovieRepository__BaseURL=https://api.themoviedb.org/3/",
       "commandVersion": "1.0",
       "serviceActions": {
         "movieapi.application": "StartDebugging"
+      },
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "HttpMovieRepository__BaseURL": "https://api.themoviedb.org/3/"
       }
     },
     "FakeServer": {
@@ -13,9 +18,10 @@
       "serviceActions": {
         "movieapi.application": "StartDebugging"
       },
-      "commandLineArgs": "-f docker-compose.yml -f docker-compose.override.yml",
+      "commandLineArgs": "-f docker-compose.yml -f docker-compose.override.yml -e HttpMovieRepository__BaseURL=http://fakeserver:3000/",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "HttpMovieRepository__BaseURL": "http://fakeserver:3000/"
       }
     }
   }

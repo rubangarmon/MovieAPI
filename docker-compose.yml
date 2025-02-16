@@ -7,5 +7,4 @@ services:
     depends_on:
       - fakeserver 
     environment:
-      - HttpMovieRepository__BaseURL=https://api.themoviedb.org/3/
       - HttpMovieRepository__UserAgent=movie-app-rb
