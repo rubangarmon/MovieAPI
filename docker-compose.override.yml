@@ -1,0 +1,24 @@
+services:
+  movieapi.application:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5000
+      - ASPNETCORE_HTTPS_PORTS=5001
+      - USER_SECRETS_ID=ae4e1d8a-2b4a-4613-9410-c2b7a3b94678
+      # - HttpMovieRepository__BaseURL=https://api.themoviedb.org/3/
+      - HttpMovieRepository__BaseURL=http://fakeserver:3000/
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    volumes:
+      - $APPDATA/Microsoft/UserSecrets/$USER_SECRETS_ID:/root/.microsoft/usersecrets/$USER_SECRETS_ID
+  fakeserver:
+    build:
+      context: ./FakeServer
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./FakeServer:/app
+    command: json-server --watch db.json --routes routes.json --host 0.0.0.0 --port 3000
+    ports:
+      - "3000:3000"

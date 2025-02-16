@@ -11,16 +11,15 @@ using MovieAPI.Application.Commons.Exceptions;
 using MovieAPI.Application.Validators;
 using MovieAPI.Application.ContractsModels;
 using FluentValidation;
-using Microsoft.Extensions.Logging.EventLog;
 using MovieAPI.Core.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 #pragma warning disable CA1416 // Validate platform compatibility
 builder.Logging
     .ClearProviders()
-    .AddConsole()
-    .AddEventLog(new EventLogSettings());
+    .AddConsole();
 #pragma warning restore CA1416 // Validate platform compatibility
 // Add services to the container.
 
@@ -31,6 +30,12 @@ builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile<DtoToEntity>();
 });
+
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
 var httpMovieRepoOptions = builder.Configuration.GetSection(HttpMovieRepositoryOptions.OptionName).Get<HttpMovieRepositoryOptions>()!;
 Action<HttpClient> fc = client =>
 {

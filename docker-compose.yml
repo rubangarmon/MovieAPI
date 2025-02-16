@@ -1,0 +1,10 @@
+services:
+  movieapi.application:
+    image: ${DOCKER_REGISTRY-}movieapiapplication
+    build:
+      context: .
+      dockerfile: MovieAPI.Application/Dockerfile
+    depends_on:
+      - fakeserver 
+    environment:
+      - HttpMovieRepository__UserAgent=movie-app-rb

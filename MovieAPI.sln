@@ -17,6 +17,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI.IntegrationTests",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EF610B31-9434-455D-A0A5-D6C04FD964BC}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1822CAC1-1D28-4A44-B8D0-9B9940639467}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeServer", "FakeServer", "{93299639-EE2E-42B3-9AD2-EF065007B431}"
+	ProjectSection(SolutionItems) = preProject
+		FakeServer\db.json = FakeServer\db.json
+		FakeServer\Dockerfile = FakeServer\Dockerfile
+		FakeServer\routes.json = FakeServer\routes.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +56,10 @@ Global
 		{F5EDC511-98F6-4DFE-87E4-D916639C1E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5EDC511-98F6-4DFE-87E4-D916639C1E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5EDC511-98F6-4DFE-87E4-D916639C1E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1822CAC1-1D28-4A44-B8D0-9B9940639467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1822CAC1-1D28-4A44-B8D0-9B9940639467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1822CAC1-1D28-4A44-B8D0-9B9940639467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1822CAC1-1D28-4A44-B8D0-9B9940639467}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
