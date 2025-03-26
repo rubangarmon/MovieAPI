@@ -9,7 +9,7 @@ services:
     environment:
       - HttpMovieRepository__UserAgent=movie-app-rb
   movieapi.database:
-    image: postgres:latest
+    image: postgres:17.4-alpine3.21
     container_name: movieapi.database
     environment:
       - POSTGRES_DB=movieapi
