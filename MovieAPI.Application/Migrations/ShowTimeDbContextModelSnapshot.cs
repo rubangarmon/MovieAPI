@@ -23,36 +23,6 @@ namespace MovieAPI.Application.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MovieAPI.Core.Models.Movie", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsAdult")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("OriginalTitle")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Overview")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PosterPath")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ReleaseDate")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Movie");
-                });
-
             modelBuilder.Entity("MovieAPI.Core.Models.ShowTime.MovieShowTime", b =>
                 {
                     b.Property<int>("Id")
@@ -98,8 +68,9 @@ namespace MovieAPI.Application.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -170,7 +141,7 @@ namespace MovieAPI.Application.Migrations
 
             modelBuilder.Entity("MovieAPI.Core.Models.ShowTime.ShowTime", b =>
                 {
-                    b.HasOne("MovieAPI.Core.Models.Movie", "Movie")
+                    b.HasOne("MovieAPI.Core.Models.ShowTime.MovieShowTime", "Movie")
                         .WithMany()
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)

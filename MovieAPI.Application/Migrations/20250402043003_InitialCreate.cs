@@ -14,23 +14,6 @@ namespace MovieAPI.Application.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Movie",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    OriginalTitle = table.Column<string>(type: "text", nullable: false),
-                    ReleaseDate = table.Column<string>(type: "text", nullable: true),
-                    IsAdult = table.Column<bool>(type: "boolean", nullable: false),
-                    PosterPath = table.Column<string>(type: "text", nullable: true),
-                    Overview = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movie", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MovieShowTimes",
                 columns: table => new
                 {
@@ -75,9 +58,9 @@ namespace MovieAPI.Application.Migrations
                 {
                     table.PrimaryKey("PK_ShowTimes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShowTimes_Movie_MovieId",
+                        name: "FK_ShowTimes_MovieShowTimes_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movie",
+                        principalTable: "MovieShowTimes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -94,7 +77,7 @@ namespace MovieAPI.Application.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false),
                     ShowTimeId = table.Column<int>(type: "integer", nullable: false),
                     SeatsReserved = table.Column<int>(type: "integer", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false)
@@ -130,16 +113,13 @@ namespace MovieAPI.Application.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MovieShowTimes");
-
-            migrationBuilder.DropTable(
                 name: "Reservations");
 
             migrationBuilder.DropTable(
                 name: "ShowTimes");
 
             migrationBuilder.DropTable(
-                name: "Movie");
+                name: "MovieShowTimes");
 
             migrationBuilder.DropTable(
                 name: "Rooms");

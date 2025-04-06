@@ -7,6 +7,7 @@ services:
       - USER_SECRETS_ID=ae4e1d8a-2b4a-4613-9410-c2b7a3b94678
       # - HttpMovieRepository__BaseURL=https://api.themoviedb.org/3/
       - HttpMovieRepository__BaseURL=http://fakeserver:3000/
+      - ConnectionStrings__DefaultConnection=Host=movieapi.database;Port=5432;Database=movieapi;Username=movieapi;Password=movieapi
     ports:
       - "5000:5000"
       - "5001:5001"

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MovieAPI.Core.Models.ShowTime;
+﻿namespace MovieAPI.Core.Models.ShowTime;
 
 public record ShowTime
 {
@@ -12,7 +6,7 @@ public record ShowTime
     public int RoomId { get; set; }
     public Room Room { get; set; } = null!;
     public int MovieId { get; set; }
-    public Movie Movie { get; set; } = null!;
+    public MovieShowTime Movie { get; set; } = null!;
     public DateTime Schedule { get; set; }
     public int AvailableSeats { get; set; }
 }

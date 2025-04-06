@@ -15,6 +15,7 @@ using MovieAPI.Core.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using MovieAPI.Infrastructure.Contexts;
+using MovieAPI.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,6 +70,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();
