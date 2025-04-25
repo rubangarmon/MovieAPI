@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +22,17 @@ internal class MovieApiWebApplicationFactory : WebApplicationFactory<Program>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
+
+        builder.ConfigureAppConfiguration((_, configurationBuilder) =>
+        {
+            configurationBuilder.Sources.Clear();
+            configurationBuilder.AddInMemoryCollection(new Dictionary<string, string>
+            {
+                { "HttpMovieRepository:BaseURL", "http://fakeserver:3000/" },
+                { "HttpMovieRepository__BaseURL", "http://fakeserver:3000/" },
+            });
+        });
+
         builder.ConfigureServices(services =>
         {
             // Remover los HttpClients registrados en Program.cs para evitar conflictos

@@ -8,3 +8,14 @@ services:
       - fakeserver 
     environment:
       - HttpMovieRepository__UserAgent=movie-app-rb
+  movieapi.database:
+    image: postgres:17.4-alpine3.21
+    container_name: movieapi.database
+    environment:
+      - POSTGRES_DB=movieapi
+      - POSTGRES_USER=movieapi
+      - POSTGRES_PASSWORD=movieapi
+    volumes:
+      - ./.containers/movieapi.database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

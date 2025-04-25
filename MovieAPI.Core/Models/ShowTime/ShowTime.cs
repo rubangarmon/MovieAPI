@@ -1,0 +1,12 @@
+﻿namespace MovieAPI.Core.Models.ShowTime;
+
+public record ShowTime
+{
+    public int Id { get; set; }
+    public int RoomId { get; set; }
+    public Room Room { get; set; } = null!;
+    public int MovieId { get; set; }
+    public MovieShowTime Movie { get; set; } = null!;
+    public DateTime Schedule { get; set; }
+    public int AvailableSeats { get; set; }
+}

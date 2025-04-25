@@ -13,6 +13,9 @@ using MovieAPI.Application.ContractsModels;
 using FluentValidation;
 using MovieAPI.Core.Services;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using MovieAPI.Infrastructure.Contexts;
+using MovieAPI.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,10 +34,10 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile<DtoToEntity>();
 });
 
-builder.Configuration
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
-    .AddEnvironmentVariables();
+//builder.Configuration
+//    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+//    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
+//    .AddEnvironmentVariables();
 
 var httpMovieRepoOptions = builder.Configuration.GetSection(HttpMovieRepositoryOptions.OptionName).Get<HttpMovieRepositoryOptions>()!;
 Action<HttpClient> fc = client =>
@@ -44,6 +47,11 @@ Action<HttpClient> fc = client =>
     client.DefaultRequestHeaders.UserAgent.ParseAdd(httpMovieRepoOptions.UserAgent);
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", httpMovieRepoOptions.Token);
 };
+
+builder.Services.AddDbContext<ShowTimeDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("MovieAPI.Application")));
 
 builder.Services.AddScoped<IValidator<MediaRequest>, MediaRequestValidator>();
 builder.Services.AddScoped<ISearchService, SearchService>();
@@ -62,6 +70,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();
