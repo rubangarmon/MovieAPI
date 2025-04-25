@@ -34,10 +34,10 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile<DtoToEntity>();
 });
 
-builder.Configuration
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
-    .AddEnvironmentVariables();
+//builder.Configuration
+//    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+//    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
+//    .AddEnvironmentVariables();
 
 var httpMovieRepoOptions = builder.Configuration.GetSection(HttpMovieRepositoryOptions.OptionName).Get<HttpMovieRepositoryOptions>()!;
 Action<HttpClient> fc = client =>
